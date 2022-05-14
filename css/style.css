@@ -1,3 +1,4 @@
+/* ===========     Подключение шрифтов ================ */
 @import url(https://fonts.googleapis.com/css?family=Poppins:regular,500,600&display=swap);
 @font-face {
    font-family: CalSans;
@@ -7,6 +8,8 @@
    font-weight: 400;
    font-style: normal;
 }
+
+/*  =================== Обнуляющий файл ======================= */
 *,
 *::before,
 *::after {
@@ -15,6 +18,7 @@
    border: none;
    box-sizing: border-box;
 }
+
 html,
 body {
    height: 100%;
@@ -33,15 +37,16 @@ a {
 li {
    list-style: none;
 }
+
+/*  ===================== Разметка сайта ========================== */
 .wrapper {
    overflow: hidden;
    min-height: 100%;
    display: flex;
    flex-direction: column;
 }
-.main {
-   flex: 1 1 auto;
-}
+
+/*  ================ настройка для контейнера ======================= */
 [class*="__container"] {
    max-width: 1230px;
    margin: 0 auto;
@@ -49,9 +54,15 @@ li {
 }
 /* =============================== Header =============================== */
 .header {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 50;
 }
+
 .header__container {
-   padding: 5px 0px 5px 0px;
+   padding: 5px 0px 5px 15px;
    display: flex;
    gap: 131px;
    align-items: center;
@@ -62,10 +73,16 @@ li {
 .header__menu {
 }
 .menu {
+   padding: 10px 15px 10px 0px;
+   border-radius: 5px;
+   background-color: rgba(255, 255, 255, 0.8);
 }
+
 .menu__list {
    display: flex;
-   gap: 56px;
+   column-gap: 56px;
+   row-gap: 10px;
+   flex-wrap: wrap;
 }
 .menu__item {
 }
@@ -75,4 +92,174 @@ li {
 }
 .menu__link:hover {
    text-decoration: underline;
+}
+@media (max-width: 1092px) {
+   .header__container {
+      gap: 50px;
+      min-height: 100px;
+   }
+   .menu__list {
+      column-gap: 40px;
+   }
+}
+@media (max-width: 767.98px) {
+   .header__container {
+      min-height: 65px;
+   }
+}
+@media (max-width: 479.98px) {
+   .header__container {
+      gap: 15px;
+   }
+   .menu {
+      padding: 0;
+   }
+   .menu__list {
+      column-gap: 20px;
+   }
+   .header__logo {
+      width: 28px;
+      flex: 0 0 28px;
+      overflow: hidden;
+   }
+}
+/*  ==================================== page =================================*/
+
+.page {
+   flex: 1 1 auto;
+}
+.page__main {
+}
+/*================= Main-block=============== */
+
+.main {
+   padding-bottom: 80px;
+}
+.main__container {
+   display: flex;
+}
+.main__content {
+   flex: 0 1 50%;
+   padding-top: 120px;
+   align-self: flex-end;
+   padding-bottom: 60px;
+   padding-right: 20px;
+}
+.main__title {
+   color: #121212;
+   font-family: "Cal Sans";
+   font-size: 56px;
+   line-height: 1.2;
+}
+.main__title span {
+   color: #ff6428;
+}
+.main__title:not(:last-child) {
+   margin-bottom: 16px;
+}
+.main__text {
+   font-weight: 500;
+   line-height: 24px;
+   max-width: 420px;
+}
+.main__text:not(:last-child) {
+   margin-bottom: 31px;
+}
+.main__actions {
+}
+
+.actions-main {
+   display: flex;
+   align-items: center;
+}
+.actions-main__button {
+   text-align: center;
+   padding: 18.5px 48px;
+   background-color: #ff6428;
+   border-radius: 40px;
+   font-weight: 600;
+   line-height: 28px;
+   color: #ffffff;
+   transition: all 0.3s ease 0s;
+}
+.actions-main__button:hover {
+   background-color: #964323;
+   transition: all 0.3s ease 0s;
+}
+.actions-main__button:not(:last-child) {
+   margin-right: 40px;
+}
+.actions-main__icon {
+}
+.actions-main__icon:not(:last-child) {
+   margin-right: 27px;
+}
+.main__decor {
+   flex: 0 1 50%;
+}
+
+.main__image {
+   /*display: inline-block;*/
+   position: relative;
+   margin-right: -135px;
+   max-width: 672px;
+   padding-bottom: 96.7%;
+}
+.main__image img {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+
+   border-radius: 0 0 160px 375px;
+}
+.main__image::after {
+   content: "";
+   background: url("/img/main/decor.svg") 0 0 no-repeat;
+   width: 80px;
+   height: 80px;
+   right: 36.3%;
+   bottom: 0;
+   position: absolute;
+   transform: translate(0, 50%);
+}
+@media (max-width: 1092px) {
+   .main__image img {
+      width: 100%;
+   }
+   .main__content {
+      flex: 0 0 60%;
+      padding-bottom: 0;
+   }
+   .main__decor {
+      flex: 0 0 40%;
+   }
+}
+@media (max-width: 767.98px) {
+   .main__content {
+      flex: 1 1 100%;
+      padding-right: 0;
+      padding-top: 80px;
+   }
+   .main__decor {
+      display: none;
+   }
+   .main__title {
+      font-size: 44px;
+   }
+}
+@media (max-width: 479.98px) {
+   .actions-main {
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .actions-main__button {
+      flex: 1 1 100%;
+   }
+   .actions-main__button:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 15px;
+   }
 }
